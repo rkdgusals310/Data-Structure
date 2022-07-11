@@ -12,7 +12,7 @@ int peek(int_array* array, const int index)
 {
     if (array->size >= index && index < 0)
     {
-        exit(0);
+        exit(1);
     }
     else
     {
@@ -29,7 +29,14 @@ int insert(int_array *array, const int index, const int value)
 
     if (array->size == array->capacity)
     {
+        int* temp = array->arr;
         array->arr = (int*)realloc(array->arr, sizeof(int) * array->capacity * 2);
+        if (array->arr == NULL)
+        {
+            free(temp);
+            exit(1);
+        }
+
         array->capacity = array->capacity * 2;
     }
 
@@ -47,7 +54,14 @@ void push(int_array* array, const int value)
 {
     if (array->size == array->capacity)
     {
+        int* temp = array->arr;
         array->arr = (int*)realloc(array->arr, sizeof(int) * array->capacity * 2);
+        if (array->arr == NULL)
+        {
+            free(temp);
+            exit(1);
+        }
+        
         array->capacity = array->capacity * 2;
     }
 
@@ -57,7 +71,7 @@ void push(int_array* array, const int value)
 
 int delete (int_array *array, const int index)
 {
-    if (array->arr[0] != NULL || (array->size < index && index < 0))
+    if (array->size == 0 || (array->size - 1 < index && index < 0))
     {
         return 0; 
     }
