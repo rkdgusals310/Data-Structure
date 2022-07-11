@@ -63,6 +63,7 @@ int main(){
                 printf("Enter the data you want to find: ");
                 scanf("%d", &val);
                 find(&intArr, val);
+                break;
             default:
                 printf("please enter valid number \n");
         }

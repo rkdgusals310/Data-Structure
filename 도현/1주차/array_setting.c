@@ -115,6 +115,7 @@ void find(int_array* array, const int value){
             }
         }
     }
+    free(indexArray.arr);
 }
 
 
