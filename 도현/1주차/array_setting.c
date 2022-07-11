@@ -23,6 +23,9 @@ int insert(int_array* array, const int index, const int value){
         int* temp = realloc(array->arr, array->capacity*2); // 배열이 꽉찬 상태에서 삽입 시 2배씩 크기 증가
         // 공간 재할당이 성공했다면 arr = temp 및 capacity 갱신
         if(temp != NULL){
+            if(array->arr != temp){ // realloc 후 주소가 다르다면
+                free(array->arr);   // 메모리 누수 방지
+            }
             array->arr = temp;
             array->capacity = array->capacity*2;  // capacity 갱신
         } else {
@@ -53,6 +56,9 @@ void push(int_array* array, const int value){
         int* temp = realloc(array->arr, array->capacity*2); // 배열이 꽉찬 상태에서 삽입 시 2배씩 크기 증가
         // 공간 재할당이 성공했다면 arr = temp 및 capacity 갱신
         if(temp != NULL){
+            if(array->arr != temp){ // realloc 후 주소가 다르다면
+                free(array->arr);   // 메모리 누수 방지
+            }
             array->arr = temp;
             array->capacity = array->capacity*2;  // capacity 갱신
         }
