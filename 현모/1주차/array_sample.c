@@ -10,7 +10,7 @@ void init(int_array* array, const int capacity)
 
 int peek(int_array* array, const int index)
 {
-    if (array->size >= index && index < 0)
+    if (array->size <= index && index < 0)
     {
         exit(1);
     }
@@ -84,5 +84,4 @@ int delete (int_array *array, const int index)
 
     return 1;
 } 
-
 
