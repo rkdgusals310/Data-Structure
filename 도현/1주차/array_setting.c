@@ -85,7 +85,7 @@ int delete(int_array* array, const int index){
 
 int peek(int_array* array, const int index){
     // index 범위를 벗어났다면 프로그램 종료
-    if(index < 0 || index > array->size){
+    if(index < 0 || index >= array->size){
         printf("Invalid access.. Program exit\n");
         exit(1);
     } else {
